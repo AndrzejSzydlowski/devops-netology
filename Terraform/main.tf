@@ -1,8 +1,7 @@
 provider "aws" {
   region = "us-east-2"
-  access_key = $AWS_ACCESS_KEY_ID
-  secret_key = $AWS_SECRET_ACCESS_KEY
 }
+
 data "aws_ami" "ubuntu" {
   most_recent = true
 
@@ -27,3 +26,6 @@ resource "aws_instance" "web" {
     Name = "HelloWorld"
   }
 }
+
+data "aws_caller_identity" "current" {}
+data "aws_region" "current" {}
